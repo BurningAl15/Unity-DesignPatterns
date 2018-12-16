@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440b762d5400cf943b0a5b69ed0d47b2, type: 3}
+  m_Name: GamePreferences
+  m_EditorClassIdentifier: 
+  _startSpeed: 1
+  _speedAcceleration: 1
+  _obstacleSpawnCd: 0.5
