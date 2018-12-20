@@ -44,7 +44,15 @@ public class PlayerController : MonoBehaviour
     public void UndoCommand()
     {
         //TODO Exercise 3.1 - 1.	Implement the Undo-Functionality
-        
+        if(m_curCommandIndex>0)
+        {
+            m_isExecutingCommand=true;
+            m_curCommandIndex--;
+            m_pm.actionCompleted+=OnUndoCompleted;
+            m_commandList[m_curCommandIndex].Undo();
+        }
+        else
+            Debug.Log("Nothing undo");
     }
 
     /// <summary>
@@ -79,6 +87,10 @@ public class PlayerController : MonoBehaviour
     private void OnUndoCompleted()
     {
         //TODO Exercise 3.1 - Implement the Undo-Functionality 
+        m_pm.actionCompleted-=OnUndoCompleted;
+        m_isExecutingCommand=false;
+        m_commandList.RemoveAt(m_curCommandIndex);
+        m_historyUI.RemoveLastEntry();
     }
 
     #region not relevant

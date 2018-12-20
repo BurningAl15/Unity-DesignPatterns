@@ -6,6 +6,7 @@ public interface ICommand
 {
     void Execute();
     string GetCommandName();
+    void Undo();
 }
 
 /// <summary>
@@ -30,6 +31,10 @@ public class AttackCommand : ICommand
     }
 
     //TODO: Exercise 2.2 - Implement Commands for MoveUp, MoveDown, MoveRight, MoveLeft
+    public void Undo()
+    {
+        m_pm.Attack();
+    }
 }
 
 public class MoveUpCommand : ICommand
@@ -48,6 +53,11 @@ public class MoveUpCommand : ICommand
     public string GetCommandName()
     {
         return "MoveUp";
+    }
+
+    public void Undo()
+    {
+        m_pm.MoveDown();
     }
 }
 
@@ -68,6 +78,11 @@ public class MoveDownCommand : ICommand
     {
         return "MoveDown";
     }
+
+    public void Undo()
+    {
+        m_pm. MoveUp();
+    }
 }
 
 public class MoveRightCommand : ICommand
@@ -87,6 +102,11 @@ public class MoveRightCommand : ICommand
     {
         return "MoveRight";
     }
+
+    public void Undo()
+    {
+        m_pm.MoveLeft();
+    }
 }
 
 public class MoveLeftCommand : ICommand
@@ -105,5 +125,10 @@ public class MoveLeftCommand : ICommand
     public string GetCommandName()
     {
         return "MoveLeft";
+    }
+
+    public void Undo()
+    {
+        m_pm.MoveRight();
     }
 }
